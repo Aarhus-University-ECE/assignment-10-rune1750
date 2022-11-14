@@ -16,6 +16,8 @@ TEST_CASE("linked_list") {
 		int	  sum;
 		node* ns = make_node(1, make_node(2, make_node(3, make_node(4, make_node(5, NULL)))));
 
+		print_list(ns);
+		
 		sum = sum_squares(ns);
 		REQUIRE(sum == 55);
 		free_list(ns);

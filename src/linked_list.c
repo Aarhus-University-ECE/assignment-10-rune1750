@@ -1,8 +1,8 @@
 #include <assert.h> /* assert */
 #include <stdio.h>  /* printf */
 #include <stdlib.h> /* malloc, free */
-
 #include "linked_list.h"
+#include <math.h>
 
 /* functions to create lists */
 node *make_node(int v, node *q) {
@@ -22,23 +22,38 @@ void free_list(node *p) {
   }
 }
 
-/* print list to console */
+// Prints data to console and runs the void again 
+// with the node *p updated to be the next element in the array
 void print_list(node *p) {
-  // Add your code for exercise 1
-  // There is NO testcode for this
+if(p != NULL){
+printf("%d \n", p->value);  
+print_list(p->next);  
+}
 }
 
+// Uses <math.h> pow function to calculate the square of numbers
+// the sum of the numbers is returned
 int sum_squares(node *p) {
   // Add your code for excercise 2
   // You can find the tests in tests.cpp
-  return -1;
+  if(p==NULL){
+    return 0; 
+  }
+  else{
+  return square(p->value) + sum_squares(p->next);
+  }
 }
 
 typedef int (*fn_int_to_int)(int);
 
+// Function to take a linked list and create a new linked list
+// With integer values squared from the previous linked list
 node *map(node *p, fn_int_to_int f) { 
-  // Add your code for excercise 3
-  
+  if (p == NULL){
+    return NULL; 
+  }else{
+    return make_node(f(p->value), map(p->next, f)); 
+  }
   return NULL; 
 }
 

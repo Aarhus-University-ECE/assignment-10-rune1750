@@ -2,7 +2,7 @@
 #define BTREE_H
 
 struct tree_node {
-  int item;
+  int data;
   struct tree_node *left;
   struct tree_node *right;
 };
